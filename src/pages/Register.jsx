@@ -6,6 +6,7 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { doc, setDoc } from "firebase/firestore";
 import { useNavigate, Link } from "react-router-dom";
 
+
 const Register = () => {
   const [err, setErr] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -74,11 +75,11 @@ const Register = () => {
             <span>Add an avatar</span>
           </label>
           <button disabled={loading}>Sign up</button>
-          {loading && `Uploading ...`}
-          {err && <span>Something went wrong</span>}
+          {loading && <div className="loader_container"> <div className="loader"></div></div>}
+          {err && <span className="error">Something went wrong</span>}
         </form>
         <p>
-          You do have an account? <Link to="/register">Login</Link>
+          You do have an account? <Link to="/login">Login</Link>
         </p>
       </div>
     </div>
@@ -86,3 +87,5 @@ const Register = () => {
 };
 
 export default Register;
+
+
